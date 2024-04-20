@@ -1,0 +1,88 @@
+/*
+ * STEPPER_Program.c
+ *
+ *  Created on: 21 Mar 2024
+ *      Author: User
+ */
+
+
+/**************** File Inclusions ******************/
+
+/****************************MCAL**************************/
+#include "../../MCAL/DIO/DIO_Interface.h"
+
+
+#include "STEPPER_Interface.h"
+#include "STEPPER_Config.h"
+#include "STEPPER_Private.h"
+
+/*********** Delay **************************/
+#include "avr/delay.h"
+
+/****************** Functions Implementation ************/
+
+void STEPPER_voidInit(void){
+	DIO_u8SetPinDirection(STEPPER_PORT,STEPPER_BLUE_PIN,DIO_PIN_OUTPUT);
+	DIO_u8SetPinDirection(STEPPER_PORT,STEPPER_PINK_PIN,DIO_PIN_OUTPUT);
+	DIO_u8SetPinDirection(STEPPER_PORT,STEPPER_YELLOW_PIN,DIO_PIN_OUTPUT);
+	DIO_u8SetPinDirection(STEPPER_PORT,STEPPER_ORANGE_PIN,DIO_PIN_OUTPUT);
+}
+
+void STEPPER_voidRotate(u8 copy_u8Direction){
+	switch(copy_u8Direction)
+	{
+	case NORTH:
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_BLUE_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_PINK_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_YELLOW_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_ORANGE_PIN,DIO_PIN_HIGH);
+		break;
+
+	case EASTERN_NORTH:
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_BLUE_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_PINK_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_YELLOW_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_ORANGE_PIN,DIO_PIN_LOW);
+		break;
+
+	case EAST:
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_BLUE_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_PINK_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_YELLOW_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_ORANGE_PIN,DIO_PIN_LOW);
+		break;
+
+	case EASTERN_SOUTH:
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_BLUE_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_PINK_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_YELLOW_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_ORANGE_PIN,DIO_PIN_LOW);
+		break;
+
+	case SOUTH:
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_BLUE_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_PINK_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_YELLOW_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_ORANGE_PIN,DIO_PIN_LOW);
+		break;
+
+	case WESTERN_SOUTH:
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_BLUE_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_PINK_PIN,DIO_PIN_HIGH);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_YELLOW_PIN,DIO_PIN_LOW);
+		DIO_u8SetPinValue(STEPPER_PORT,STEPPER_ORANGE_PIN,DIO_PIN_LOW);
+		break;
+
+	case WEST:
+
+		break;
+
+	case WESTERN_NORTH:
+		break;
+
+	default:
+		break;
+
+	}
+}
+
