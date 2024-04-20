@@ -30,6 +30,10 @@
 #define BUTTON2_UNPRESSED		3
 
 
+#define FAN1_OPERATE        4
+#define FAN2_OPERATE        5
+
+
 
 
 
