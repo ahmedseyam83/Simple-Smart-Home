@@ -208,7 +208,7 @@ void FAN(void *ptr)
 			LCD_voidClearScreen();
 			xSemaphoreTake(LCD_xMutex,MAX_TIME);
 
-			if(Local_u8Received == 4 )
+			if(Local_u8Received == FAN1_OPERATE )
 			{
 				if( Global_u8RepEnter1 == SINGLE_ENTER)
 				{
@@ -249,7 +249,7 @@ void FAN(void *ptr)
 				}
 
 			}
-			else if(Local_u8Received == 5 )
+			else if(Local_u8Received == FAN2_OPERATE )
 			{
 				if(Global_u8RepEnter2 == SINGLE_ENTER)
 				{
